@@ -1,0 +1,131 @@
+{
+  "users": [
+    {
+      "name": "Taylor Gleichner",
+      "id": 1
+    },
+    {
+      "name": "Nettie Langworth",
+      "id": 2
+    },
+    {
+      "name": "Kelli Kub",
+      "id": 3
+    },
+    {
+      "name": "Rita Jenkins",
+      "id": 4
+    },
+    {
+      "name": "Tina Runte",
+      "id": 5
+    },
+    {
+      "name": "Brenda Schroeder",
+      "id": 6
+    },
+    {
+      "name": "Miss Sonia O'Keefe",
+      "id": 7
+    },
+    {
+      "name": "Christian McCullough",
+      "id": 8
+    },
+    {
+      "name": "Anita Simonis",
+      "id": 9
+    },
+    {
+      "name": "Sylvia Erdman",
+      "id": 10
+    },
+    {
+      "name": "Maryann Williamson",
+      "id": 11
+    },
+    {
+      "name": "Cameron Grimes",
+      "id": 12
+    }
+  ],
+  "albums": [
+    {
+      "userId": 2,
+      "title": "Luxurious Rubber Table",
+      "id": 785
+    },
+    {
+      "userId": 8,
+      "title": "Small Granite Towels",
+      "id": 786
+    },
+    {
+      "userId": 3,
+      "title": "Rustic Cotton Mouse",
+      "id": 790
+    },
+    {
+      "userId": 3,
+      "title": "Refined Rubber Soap",
+      "id": 793
+    },
+    {
+      "userId": 2,
+      "title": "Modern Concrete Tuna",
+      "id": 794
+    },
+    {
+      "userId": 4,
+      "title": "Bespoke Steel Keyboard",
+      "id": 797
+    },
+    {
+      "userId": 2,
+      "title": "Ergonomic Bronze Table",
+      "id": 799
+    },
+    {
+      "userId": 1,
+      "title": "Generic Metal Ball",
+      "id": 800
+    },
+    {
+      "userId": 8,
+      "title": "Rustic Steel Hat",
+      "id": 803
+    },
+    {
+      "userId": 11,
+      "title": "Unbranded Fresh Towels",
+      "id": 804
+    },
+    {
+      "userId": 12,
+      "title": "Intelligent Frozen Bike",
+      "id": 805
+    }
+  ],
+  "photos": [
+    {
+      "url": "https://picsum.photos/seed/W1aO8/100/100",
+      "albumId": 800,
+      "id": 4
+    },
+    {
+      "url": "https://loremflickr.com/100/100?lock=6625300563623936",
+      "albumId": 804,
+      "id": 9
+    },
+    {
+      "url": "https://loremflickr.com/100/100?lock=2697716513636352",
+      "albumId": 800,
+      "id": 10
+    },
+    {
+      "url": "https://picsum.photos/seed/Nlbtk/100/100",
+      "albumId": 805,
+      "id": 11
+    }
+  ]
+}

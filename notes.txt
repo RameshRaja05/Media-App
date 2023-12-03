@@ -1,0 +1,80 @@
+steps to add async thunk in state:-
+1.Create a new file for your thunk. Name it after the purpose of the request
+2.Create the thunk. Give it a base type that describes the purpose of the request
+3.In the thunk,make the request,return the data that you wanna use in the reducer
+4.In the slice add extraReducers watching for the action types made by the thunk
+5.export the thunk from the store/index file
+6.when user does something we run a thunk function
+
+//my implementation of useThunk hook
+import { useState, useCallback } from "react";
+import {  SerializedError } from "@reduxjs/toolkit";
+import { useAppDispatch } from "../store";
+import { thunkActionType } from "../components/UsersList";
+import { thunkActionWithArgs } from "../components/UsersListItem";
+
+type thunkType = thunkActionWithArgs;
+export const useThunk = (
+  thunk: thunkType
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): [(args?:{id:string|number,name:string} |any) => Promise<any>, boolean, SerializedError | null] => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, SetError] = useState<null | SerializedError>(null);
+  const dispatch = useAppDispatch();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const runThunk = useCallback(
+    async (args?: {id:string|number,name:string}|any) => {
+      setIsLoading(true);
+      //Todo fix error "no overload matches this call"
+      return dispatch(thunk(args))
+        .unwrap()
+        .catch((err) => SetError(err))
+        .finally(() => setIsLoading(false));
+    },
+    [dispatch, thunk]
+  );
+
+  return [runThunk, isLoading, error];
+};
+
+
+creating a Rtk query api(it's not backend it's a client side code that's gonna fetch data for frontend)
+1.Identify a group related requests that your app needs to make
+2.Make a new file that will create the api
+3.The API needs to store a ton of state related to data,request status,errors. Add a 'reducerpath'
+4.The API needs to know how and where to send requests. Add a 'basequery'
+5.add 'endpoints' one for each kind of request you want to make. Reqs that read data are queries write data are mutations
+6.export all of the automatically generated hooks
+7.connect the API to the store. Reducer, middleware and listeners
+8.export the hooks from the store/index
+9.use the generated hooks in components.
+
+
+creating Endpoints in api
+
+1.what's the goal?
+2.Give a simplified name?
+3.Is this a query or a mutation?
+4.What's the path for this request?
+5.what's the query string for this request?
+6.what's the method for this request?
+7.what's the body for this request?
+
+
+Sure, here are some notes on the snippet of api:
+
+* The snippet imports the `createApi` and `fetchBaseQuery` functions from the `@reduxjs/toolkit/query/react` package. These functions are used to create an API service that can be used to fetch data from a remote server.
+* The snippet defines two types: `album` and `Albums`. The `album` type represents a single album, and the `Albums` type represents an array of albums.
+* The snippet defines a type called `User`. The `User` type represents a user who has created albums.
+* The snippet creates an API service called `albumsApi`. The `albumsApi` service has two endpoints: `fetchAlbums` and `addAlbum`.
+* The `fetchAlbums` endpoint is used to fetch a list of albums for a given user. The `addAlbum` endpoint is used to add a new album for a given user.
+* The `albumsApi` service exports two hooks: `useFetchAlbumsQuery` and `useAddAlbumMutation`. These hooks can be used to fetch and mutate data from the API service.
+
+Here are some additional notes:
+
+* The `baseQuery` option is used to specify the base URL for the API service.
+* The `tagTypes` option is used to specify the types of tags that are used to track the dependencies between different endpoints.
+* The `providesTags` and `invalidatesTags` options are used to specify how the tags are updated when an endpoint is executed.
+
+I hope this helps! Let me know if you have any other questions.
